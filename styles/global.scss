@@ -8,3 +8,15 @@
 	border: none;
 	outline: none;
 }
+
+body {
+	overflow: hidden;
+}
+
+button {
+	cursor: pointer;
+	
+	&:disabled {
+		cursor: default;
+	}
+}
