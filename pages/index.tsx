@@ -1,11 +1,13 @@
 import { useRef, useState, useCallback, useEffect, FormEvent } from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
+import { toast } from 'react-toastify'
 
 import Message from 'models/Message'
 import getMessages from 'lib/getMessages'
 import sendMessage from 'lib/sendMessage'
 import onMessage from 'lib/onMessage'
+import Navbar from 'components/Navbar'
 
 import styles from 'styles/Home.module.scss'
 
@@ -26,7 +28,7 @@ const Home: NextPage = () => {
 			await sendMessage(message)
 		} catch (error) {
 			setMessage(message)
-			alert(error.message)
+			toast.error(error.message)
 		}
 	}, [inputRef, message, setMessage])
 	
@@ -50,7 +52,7 @@ const Home: NextPage = () => {
 			.then(newMessages => {
 				setMessages(oldMessages => [...newMessages, ...oldMessages])
 			})
-			.catch(({ message }) => alert(message))
+			.catch(({ message }) => toast.error(message))
 		
 		return onMessage(message => {
 			setMessages(messages => [...messages, message])
@@ -62,6 +64,7 @@ const Home: NextPage = () => {
 			<Head>
 				<title key="title">talkalot</title>
 			</Head>
+			<Navbar />
 			<div ref={messagesRef} className={styles.messages}>
 				{messages.map(message => (
 					<p key={message.id} className={styles.message}>

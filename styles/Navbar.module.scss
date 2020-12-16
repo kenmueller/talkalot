@@ -1,0 +1,36 @@
+.root {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 24px;
+}
+
+.title {
+	color: white;
+}
+
+.auth {
+	height: 30px;
+	padding: 0 12px;
+	line-height: 1.15;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	background: black;
+	border: 1px solid white;
+	border-radius: 8px;
+	transition: color 0.3s, background 0.3s, opacity 0.3s, transform 0.3s;
+	
+	&:disabled {
+		opacity: 0.7;
+	}
+	
+	&:not(:disabled):hover {
+		color: black;
+		background: white;
+	}
+	
+	&:active {
+		transform: translateY(-2px);
+	}
+}

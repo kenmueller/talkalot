@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { ToastContainer } from 'react-toastify'
 
 import 'styles/global.scss'
 
@@ -16,6 +17,7 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => (
 			/>
 		</Head>
 		<Component {...pageProps} />
+		<ToastContainer />
 	</>
 )
 
